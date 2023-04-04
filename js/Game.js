@@ -118,6 +118,8 @@ class Game {
         player.positionY += 10;
         player.update();
       }
+      //adiciona todos os controles do jogador 
+      this.handlePlayerControls();
 
       drawSprites();
     }
@@ -147,6 +149,13 @@ class Game {
 handleResetButton() {
   this.resetButton.mousePressed(() => {
    //defina o valor inicial para os jogadores e gamecount.
+   database.ref("/").set({
+     playerCount: 0,
+     gameState: 0,
+     players: {}
+   });
+   
+  
   });
 }
 handlePlayerControls() {
@@ -156,5 +165,13 @@ handlePlayerControls() {
   }
 
  //preencher com keydown para esquerda e direita
+  if(keyisDown(LEFT_ARROW) &&pllayer.positionX > widht / 3 
+     player.positionX -= 5;
+     player.update();
+}
+  if (keyIsDown(RIGHT_ARROW) && player.positionX < widht / 2 
+   player.postionX += 5;
+   player.update();
+  }
 }
 }
